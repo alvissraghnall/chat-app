@@ -1,4 +1,4 @@
-import styles from '../styles/MyMessage.module.css'
+import styles from '../styles/Message.module.css'
 
 
 const MyMessage = ({ message }) => {
@@ -16,7 +16,7 @@ const MyMessage = ({ message }) => {
 
     return (
         <div className={`message ${styles.cover}`}>
-            
+            {message.text}
         </div>
     )
 }

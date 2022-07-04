@@ -1,0 +1,12 @@
+
+.cover {
+    float: right;
+    margin-right: 18px;
+    color: whitesmoke;
+    background-color: #3c2b51;
+}
+
+.theircover {
+    float: left;
+    background-color: #dbcdec;
+}
