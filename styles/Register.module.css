@@ -1,0 +1,22 @@
+
+.register {
+    height: 100vh;
+    width: 100%;
+    background: rgb(117,84,160);
+    background: linear-gradient(90deg, rgba(117,84,160,1) 7%, rgba(117,84,160,1) 17%, rgba(106,95,168,1) 29%, rgba(99,103,174,1) 44%, rgba(87,116,184,1) 66%, rgba(70,135,198,1) 83%, rgba(44,163,219,1) 96%, rgba(22,188,237,1) 100%, rgba(0,212,255,1) 100%);  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    color: hsla(0, 15%, 80%, 0.925);
+    margin-bottom: 1.7em;
+    width: 100%;
+    font-size: 2em;;
+}
+
+.form {
+    max-width: 600px;
+}

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import styles from '../styles/Login.module.css'
+
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -10,16 +12,16 @@ const Login = () => {
     }
 
     return (
-        <div className="wrapper">
-            <div className="form">
-                <h1 className="title"> Maxi Chat App </h1>
+        <div className={styles.wrapper}>
+            <div className={styles.form}>
+                <h1 className={styles.title}> Maxi Chat App </h1>
 
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
-                        className="input"
+                        className={styles.input}
                         placeholder="Username"
                         required
                     />
@@ -27,13 +29,13 @@ const Login = () => {
                         type="text"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
-                        className="input"
+                        className={styles.input}
                         placeholder="Password"
                         required
                     />
 
                     <div align="center">
-                        <button type="submit" className="button">
+                        <button type="submit" className={styles.button}>
                             <span> Start Chatting! </span>
                         </button>
                     </div>
