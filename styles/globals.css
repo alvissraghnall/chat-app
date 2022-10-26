@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .register-div {
-  @apply relative z-0 mb-6 w-full group;
+  @apply relative z-0 mb-6 w-full;
 }
 
 .register-label {
@@ -16,6 +16,10 @@
 
 body {
   background-image: linear-gradient(to right bottom, #46ed2a, #42e1be, #58de9c, #78d975, #99d14c);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 
 .form-field-error-msg {

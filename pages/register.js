@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import { useFormValidator } from "../util/form/useFormValidator"
-import First from "../components/multi-step/First";
+
 // import RegisterCard from "../components/RegisterCard";
 
 
@@ -48,7 +48,7 @@ const Register = () => {
                 <p className="text-l text-gray-600"> Register to continue with MeYou! </p>
 
                 {/* <div className="grid md:grid-cols-2 md:gap-6">
-                    <div className="register-div">
+                    <div className="register-div group">
                         <input 
                             type="text" 
                             name="first_name" 
@@ -62,7 +62,7 @@ const Register = () => {
                         />
                         <label htmlFor="first_name" className="register-label"> Your First Name </label>
                     </div>
-                    <div className="register-div">
+                    <div className="register-div group">
                         <input 
                             type="text" 
                             name="last_name" 
@@ -79,7 +79,7 @@ const Register = () => {
                 </div> */}
 
                 <div className="grid md:grid-cols-2 md:gap-6">
-                    <div className="register-div">
+                    <div className="register-div group">
                         <input 
                             type="email" 
                             name="email" 
@@ -100,7 +100,7 @@ const Register = () => {
                             ) : null
                         }
                     </div>
-                    <div className="register-div">
+                    <div className="register-div group">
                         <input 
                             type="text" 
                             name="username" 
@@ -125,7 +125,7 @@ const Register = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 md:gap-6">
-                    <div className="register-div">
+                    <div className="register-div group">
                         <input 
                             type="password" 
                             name="password" 
@@ -150,7 +150,7 @@ const Register = () => {
                             ) : null
                         }
                     </div>
-                    <div className="register-div">
+                    <div className="register-div group">
                         <input 
                             type="password" 
                             name="confirmPassword" 
