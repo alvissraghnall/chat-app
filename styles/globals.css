@@ -1,3 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.register-div {
+  @apply relative z-0 mb-6 w-full group;
+}
+
+.register-label {
+  @apply peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6;
+}
+
+.register-text-input {
+  @apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer;
+}
+
+body {
+  background-image: linear-gradient(to right bottom, #46ed2a, #42e1be, #58de9c, #78d975, #99d14c);
+}
+
+.form-field-error-msg {
+  display: inline-block;
+  margin: 0.25rem 0 0 0;
+  color: rgb(175, 8, 8);
+}
+
+.form-field-error {
+  border: 1px solid rgb(175, 8, 8);
+}
+
 /* CHAT STYLES */
 * {
   font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
