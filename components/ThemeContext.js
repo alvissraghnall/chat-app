@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, createContext } from 'react'
 
 const getInitialTheme = () => {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -15,7 +15,7 @@ const getInitialTheme = () => {
         return 'light' // light theme as the default;
     }
 }
-export const ThemeContext = React.createContext()
+export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ initialTheme, children }) => {
     const [theme, setTheme] = useState(getInitialTheme)
