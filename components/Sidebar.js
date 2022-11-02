@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router';
 import Link from "next/link";
+import logo from "../assets/maxi.svg";
 import Image from "next/image";
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
@@ -36,7 +37,7 @@ const Sidebar = () => {
                 />
                 <Link href='/'>
                     <div className={`flex ${open && 'gap-x-4'} items-center`}>
-                        <Image src="assets/maxi.svg" alt='' className='pl-2' />
+                        <Image src={logo} alt='' className='pl-2' height={50} width={50} />
                         {open && (
                             <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
                                 Maxi

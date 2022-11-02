@@ -88,7 +88,7 @@ const Login = () => {
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512"
-                    class="w-3.5 h-3.5 mr-2"
+                    className="w-3.5 h-3.5 mr-2"
                 >
                 {/*<!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
                 <path
