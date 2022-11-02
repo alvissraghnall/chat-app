@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css';
-import { signOut, useSession } from 'next-auth/react'
+import { signOut, useSession, getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
@@ -14,7 +14,8 @@ export default function Home() {
       return <> Loading... </>
 
     case "authenticated":
-      return navigate.push("/user")
+      // navigate.push("/user")
+      return <>Auth</>
 
     case "authenticated":
       return (
@@ -29,6 +30,23 @@ export default function Home() {
       );
 
   }
+}
 
-  
+export const getServerSideProps = async ctx => {
+  // Check if the user is authenticated from the server
+  const session = await getSession(ctx)
+  if (!session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/api/auth/signin"
+      },
+      props: {}
+    }
+  }
+  return {
+    props: {
+      session
+    }
+  }
 }

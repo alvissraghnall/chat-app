@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ThemeProvider } from "../components/ThemeContext";
-import Background from "../components/Background";
+import { ThemeProvider } from "../../components/ThemeContext";
+import Background from "../../components/Background";
 
 
 const User = () => {

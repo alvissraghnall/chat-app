@@ -34,7 +34,13 @@ const VerifyRequest = () => (
                 <p className={styles.message}>
                     An email verification mail containing a signin link has just been forwarded to you. Please check your email box, for next steps to continue.
                 </p>
-                <Link href="/" className={`${styles.contBtn} py-3 font-medium text-sm leading-snug rounded`}>Back to home</Link>
+                <Link href="/" >
+                    <a 
+                        className={`${styles.contBtn} rounded-lg text-sm px-5 text-center py-3 font-medium text-sm leading-snug rounded`}
+                    >
+                        Back to home
+                    </a>
+                </Link>
             </div>
         </div>
     </div>
