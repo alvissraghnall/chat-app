@@ -56,7 +56,7 @@ const Sidebar = () => {
                                     'bg-gray-200 dark:bg-gray-700'
                                 }`}
                             >
-                                <span className='text-2xl'>{menu.src}</span>
+                                <span className='text-4xl'>{menu.src}</span>
                                 <span
                                     className={`${
                                         !open && 'hidden'

@@ -7,17 +7,48 @@ import React, { useState } from 'react'
 export default function Home() {
   
   const navigate = useRouter();
-  const { data: session, status } = useSession()
+
+  return (
+    <>Starboy!!!</>
+  );
+  
+}
+
+// export const getServerSideProps = async ctx => {
+//   // Check if the user is authenticated from the server
+//   const session = await getSession(ctx)
+//   if (!session) {
+//     return {
+//       redirect: {
+//         permanent: false,
+//         destination: "/api/auth/signin"
+//       },
+//       props: {}
+//     }
+//   }
+//   return {
+//     props: {
+//       session
+//     }
+//   }
+// }
+
+/**
+ * const { data: session, status } = useSession()
 
   switch(status) {
     case "loading":
+      console.log("fire 1")
       return <> Loading... </>
+      
 
     case "authenticated":
+      console.log("fire 2")
       // navigate.push("/user")
       return <>Auth</>
 
-    case "authenticated":
+    case "unauthenticated":
+      console.log("fire 3")
       return (
         <div className={styles.container}>
           <Head>
@@ -28,25 +59,4 @@ export default function Home() {
     
         </div>
       );
-
-  }
-}
-
-export const getServerSideProps = async ctx => {
-  // Check if the user is authenticated from the server
-  const session = await getSession(ctx)
-  if (!session) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/api/auth/signin"
-      },
-      props: {}
-    }
-  }
-  return {
-    props: {
-      session
-    }
-  }
-}
+ */

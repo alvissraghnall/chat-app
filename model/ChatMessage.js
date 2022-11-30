@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
 
-const messageSchema = new mongoose.Schema({
+const chatMessageSchema = new mongoose.Schema({
     from: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref
+        ref: "users"
     },
     to: {
         type: mongoose.Types.ObjectId,
-        required: true
+        required: true,
+        ref: "users"
     },
     content: {
         type: String,
@@ -18,6 +19,6 @@ const messageSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Message = mongoose.model("Message", messageSchema);
+const ChatMessage = mongoose.model("ChatMessage", chatMessageSchema);
 
-export default Message;
+export default ChatMessage;
