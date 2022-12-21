@@ -11,4 +11,6 @@
 //   if (!session) return NextResponse.redirect('/api/auth/signin')
 // }
 
-export { default } from "next-auth/middleware";
+export default () => {};
+
+// export { default } from "next-auth/middleware";
