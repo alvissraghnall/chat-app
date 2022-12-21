@@ -16,7 +16,7 @@ const Sidebar = () => {
     const [modal, setModal] = useState(false);
   return (
     <div className='flex-1 background-[#3e3c61]'> 
-        
+        {/* const [isOpen, setIsOpen] = useState(false); */}
         
         {modal && <Logout modal={modal} setModal={setModal} />}
         

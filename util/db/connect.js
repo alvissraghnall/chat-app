@@ -9,8 +9,6 @@ export const connectDB = handler => async (req, res) => {
 
     await mongoose.connect(MONGO_URI, {
         useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
         useNewUrlParser: true
     });
 
@@ -30,7 +28,10 @@ export async function conn () {
 
     if (!cached.promise) {
         const opts = {
-            bufferCommands: false
+            bufferCommands: false,
+            useNewUrlParser: true, 
+
+            useUnifiedTopology: true 
         }
 
         cached.promise = mongoose.connect(MONGO_URI, opts).then(mongoose => mongoose);

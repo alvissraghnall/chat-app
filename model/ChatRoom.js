@@ -6,6 +6,13 @@ const chatRoomSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const ChatRoom = mongoose.model("ChatRoom", chatRoomSchema);
+// const ChatRoom = mongoose.model.ChatRoom || mongoose.model("ChatRoom", chatRoomSchema);
 
-export default ChatRoom;
+function getModel() {
+    if(mongoose.models.ChatRoom) {
+        return mongoose.models.ChatRoom;
+    }
+    return mongoose.model("ChatRoom", chatRoomSchema);
+}
+
+export default getModel();

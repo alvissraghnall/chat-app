@@ -1,13 +1,15 @@
 import Room from "../../model/ChatRoom";
+import { connectDB } from "../../util/db/connect";
 
 const handler = async (req, res) => {
 
     switch (req.method) {
         case "POST":
             const newChat = new Room({
-                members: [req.body.senderId, req.body.receiverId, ...req.body ]
+                members: [req.body.senderId, req.body.receiverId ]
             });
             try {
+                console.log(newChat);
                 const savedChat = await newChat.save();
                 return res.status(201).json(savedChat);
 
@@ -23,3 +25,5 @@ const handler = async (req, res) => {
             })
     }
 }
+
+export default connectDB(handler);

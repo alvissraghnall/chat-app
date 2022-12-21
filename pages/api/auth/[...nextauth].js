@@ -11,9 +11,9 @@ import clientPromise from "../../../util/db/mongodb";
 // let User = mongoose.model("User");
 
 const THIRTY_DAYS = 30 * 24 * 60 * 60
-const THIRTY_MINUTES = 30 * 60
+const THIRTY_MINUTES = 30 * 60;
 
-export default NextAuth({
+export const NextAuthOptions = {
     pages: {
         verifyRequest: "/verify-request",
         signIn: "/login"
@@ -73,13 +73,22 @@ export default NextAuth({
     },
     callbacks: {
         async session ({ session, token }) {
-            await conn();
+            // await conn();
             // const result = await User.findById(token.sub);
             // session.user = result;
+            if (session?.user) {
+                session.user.id = token.uid;
+            }
             return session;
         },
     },
-})
+    jwt: async ({ user, token }) => {
+        if(user) token.uid = user.id;
+        return token;
+    }
+}
+
+export default NextAuth(NextAuthOptions);
 
 
 // async function checkUserExistence({ email }) {

@@ -1,5 +1,6 @@
+import { ObjectId } from "mongodb";
 import ChatMessage from "../../../model/ChatMessage";
-import { connectDB } from "../../util/db/connect";
+import { connectDB } from "../../../util/db/connect";
 
 const handler = async (req, res) => {
 
@@ -7,7 +8,7 @@ const handler = async (req, res) => {
         const { roomId } = req.query;
         try {
             const rexult = await ChatMessage.find({
-                to: roomId
+                room: ObjectId(roomId)
             });
             return res.status(200).json(rexult);
         } catch (error) {
@@ -21,3 +22,5 @@ const handler = async (req, res) => {
         });
     }
 }
+
+export default connectDB(handler);
