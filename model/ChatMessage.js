@@ -6,18 +6,14 @@ const chatMessageSchema = new mongoose.Schema({
         required: true,
         ref: "users"
     },
-    to: {
+    room: {
         type: mongoose.Types.ObjectId,
-        // required: true,
-        ref: "users"
+        required: true,
+        ref: "ChatRoom"
     },
     content: {
         type: String,
         required: true
-    },
-    room: {
-        type: mongoose.Types.ObjectId,
-        ref: "ChatRoom",
     }
 }, {
     timestamps: true

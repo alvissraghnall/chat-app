@@ -1,7 +1,10 @@
 import mongoose from "mongoose"; 
 
 const chatRoomSchema = new mongoose.Schema({
-    members: Array
+    members: Array,
+    name: {
+        type: String
+    }
 }, {
     timestamps: true
 });

@@ -43,23 +43,23 @@ const Sidebar = ({ isOpen, changeIsOpen, chats, user, handleSearch }) => {
                 onChange={e => handleSearch(e.target.value)}
             />
         </div>
-        <div className="p-2.5 text-white mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+        <div className="p-2.5 text-white mt-3 flex-col overflow-scroll flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
             {/* <BsHouseDoorFill className='text-sm' /> */}
             <h2 className="ml-4 text-sm text-gray-200">
                 Chats
             </h2>
+            <div className="flex flex-col gap-4">
+                {/* <h2 className="capitalize">conversations</h2> */}
+                { 
+                    chats.map(chat => (
+                        <div key={chat?.id}>
+                            <Conversation chat={chat} currentUser={user?.id} />
+                        </div>
+                    ))
+                }
+            </div>
         </div>
 
-        <div>
-            <h2 className="capitalize">conversations</h2>
-            { 
-                chats.map(chat => (
-                    <div key={chat.id}>
-                        <Conversation chat={chat} currentUser={user.id} />
-                    </div>
-                ))
-            }
-        </div>
 
         <hr className='my-4 text-gray-600' />
 

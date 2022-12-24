@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { userChats } from '../../services/chats.service';
-import Navbar from '../Navbar';
+// import Navbar from '../Navbar';
 import Sidebar from './Aside';
 import DrawerButton from './DrawerButton';
 
@@ -12,19 +12,25 @@ const ChatLayout = ({ children, user }) => {
         console.log(isDrawerOpen, "out");
         setIsDrawerOpen(!isDrawerOpen);
     }
+    const frUser = {
+        id: "63a3850c49c7f2fb8ada070b"
+    }
+
+    const updateChats = (chats) => setChats(chats);
 
     useEffect(() => {
         const getChats = async () => {
             try {
-                const chatsFromServer = await userChats(user.id);
-                setChats(chatsFromServer);
+                const chatsFromServer = await userChats(frUser.id);
+                updateChats(chatsFromServer);
                 console.log(chats, chatsFromServer);
             } catch (err) {
                 console.log(err);
             }
         }
         getChats();
-    }, [user])
+    }, [])
+    console.log(chats, "chats");
 
     return (
     <>
