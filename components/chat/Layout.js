@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { userChats } from '../../services/chats.service';
 // import Navbar from '../Navbar';
 import Sidebar from './Aside';
+import ChatBody from './ChatBody';
 import DrawerButton from './DrawerButton';
 
 
 const ChatLayout = ({ children, user }) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [ currentChat, setCurrentChat ] = useState(null);
     const [chats, setChats] = useState([]);
     const changeIsDrawerOpen = () => {
         console.log(isDrawerOpen, "out");
@@ -40,7 +42,8 @@ const ChatLayout = ({ children, user }) => {
             </div>
         </div> */}
         <DrawerButton isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} />
-        <Sidebar isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} chats={chats} user={user} />
+        <Sidebar isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} chats={chats} user={user} setCurrentChat={setCurrentChat} />
+        <ChatBody chat={currentChat} user={user} />
     </>
 )
 }
