@@ -14,6 +14,7 @@ const handler = async (req, res) => {
                 const saved = await newMessage.save();
                 return res.status(201).json(saved);
             } catch (error) {
+                console.error(error)
                 return res.status(500).json(error);
             }
     }

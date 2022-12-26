@@ -64,7 +64,7 @@ const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, handleSear
 
         <hr className='my-4 text-gray-600' />
 
-        <div className="p-2.5 text-white mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600">
+        <div className="p-2.5 text-white mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 fixed bottom-0 w-[17rem] justify-center">
             <BsBoxArrowInRight className='text-sm' />
             <span className="ml-4 capitalize text-sm text-gray-200">
                 logout

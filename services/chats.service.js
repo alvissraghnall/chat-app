@@ -11,3 +11,9 @@ export const getUser = async (id) => {
         method: "GET",
     }).then((res) => res.json());
 }
+
+export const getMessages = async (id) => {
+    return await fetch(`${apiUrl}/message/${id}`, {
+        method: "GET",
+    }).then((res) => res.json());
+}
