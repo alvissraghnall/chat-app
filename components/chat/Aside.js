@@ -9,6 +9,7 @@ import Conversation from './Conversation';
 
 
 const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, handleSearch }) => {
+    console.log(user, "di mma");
   return (
     <aside className={`fixed top-0 bottom-0 lg:left-0 p-2 w-72 overflow-y-auto text-center text-slate-600 dark:text-white bg-transparent dark:bg-gray-900 ${isOpen ? "" : "-left-72"}`}>
         
@@ -48,11 +49,11 @@ const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, handleSear
             {/* <h2 className="ml-4 text-sm text-gray-200 my-2">
                 Chats
             </h2> */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-full">
                 {/* <h2 className="capitalize">conversations</h2> */}
                 { 
                     chats.map(chat => (
-                        <div key={chat?.id} onClick={() => setCurrentChat(chat)}>
+                        <div key={chat?._id} onClick={() => setCurrentChat(chat)}>
                             <Conversation chat={chat} currentUser={user?.id} />
                         </div>
                     ))

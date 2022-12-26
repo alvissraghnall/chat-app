@@ -7,7 +7,7 @@ const Conversation = ({
     currentUser
 }) => {
     const [userData, setUserData] = useState(null);
-
+    console.log(currentUser, "convo dighi mma")
     useEffect(() => {
       const getUserData = async (id) => {
         try {
@@ -17,9 +17,12 @@ const Conversation = ({
           console.error(err);
         }
       }
-      if (chat.members === 2) { 
-        const userId = chat.members.find(id => id !== currentUser);
+      if (chat?.members?.length === 2) { 
+        const userId = chat?.members?.find(id => id !== currentUser);
+        console.log(chat.members, userId, currentUser);
+        console.log(222)
         getUserData(userId);
+        console.log(888)
       };
     }, []);
   return (
@@ -34,7 +37,7 @@ const Conversation = ({
         </div>
       </div>
     </div>
-    <hr className='w-4/5 border-solid border-[#d4d2d2] dark:border-gray-400 text-center absolute mx-auto ml-3' />
+    <hr className='w-4/5 border-solid border-[#d4d2d2] dark:border-gray-400 text-center absolute mx-auto' />
     </>
   )
 }

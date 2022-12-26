@@ -13,7 +13,25 @@ const handler = async function (req, res) {
                 message: "Internal Server Error!"
             });
         }
-    } else {
+    } else if (req.method === "DELETE") {
+        try {
+            // const deleted = await Room.deleteOne({
+            //     // members: 
+            // })
+            await Room.deleteMany({
+                members: { $in: ['63a3850c49c7f2fb8ada070b'] }
+            })
+            return res.status(200).json({
+                message: "Successful!"
+            });
+        } catch (error) {
+            console.error(err);
+            return res.status(500).json({
+                message: "Internal Server Error!"
+            });
+        }
+    }
+    else {
         return res.status(422).json({
             message: "Method not supported!"
         });

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { getUser } from '../../services/chats.service';
 
 const ChatBody = ({ chat, user }) => {
 
     const [userData, setUserData] = useState(null);
-    const [messages, setMessages] = useState(null);
+    const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         const getUserData = async (id) => {
@@ -14,21 +15,26 @@ const ChatBody = ({ chat, user }) => {
             console.error(err);
           }
         }
-        if (chat.members === 2) { 
-          const userId = chat.members.find(id => id !== user?.id);
-          if (chat !== null) getUserData(userId);
+        if (chat?.members?.length === 2) { 
+          const userId = chat?.members?.find(id => id !== user?.id);
+          console.log(userId);
+          if (chat !== null) getUserData(userId); console.log("ran");
         };
       }, [chat, user]);
 
       useEffect(() => {
         const fetchMsgs = async () => {
-
+            try {
+                
+            } catch (error) {
+                console.error(error);
+            }
         }
       }, []);
       
 
   return (
-    <div className="rounded-2xl grid grid-rows-[14vh,60vh,13vh] bg-[rgba(255,255,255,0.64)]">
+    <div className="grid grid-rows-[19vh,65vh,16vh] dark:bg-[rgba(255,255,255,0.64)]">
         <div className="flex flex-col py-4 pr-4 pl-0">
             <>
                 <div className="p-2 relative hover:bg-[#35caca38] dark:hover:bg-gray-600 cursor-pointer flex justify-between items-center hover:rounded-md">
@@ -39,7 +45,7 @@ const ChatBody = ({ chat, user }) => {
                     </div>
                 </div>
                 </div>
-                <hr className='w-4/5 border-solid border-[#d4d2d2] dark:border-gray-400 text-center absolute mx-auto ml-3' />
+                <hr className='w-4/5 border-solid border-[#d4d2d2] dark:border-gray-400 text-center mx-auto' />
             </>
         </div>
 

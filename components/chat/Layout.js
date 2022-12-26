@@ -41,9 +41,14 @@ const ChatLayout = ({ children, user }) => {
                 <Sidebar />
             </div>
         </div> */}
-        <DrawerButton isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} />
-        <Sidebar isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} chats={chats} user={user} setCurrentChat={setCurrentChat} />
-        <ChatBody chat={currentChat} user={user} />
+        {/* <div className="flex"> */}
+            <Sidebar isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} chats={chats} user={frUser} setCurrentChat={setCurrentChat} />
+            <div className="ml-72 w-auto relative overflow-y-auto z-[1]">
+                <DrawerButton isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} />
+                <ChatBody chat={currentChat} user={frUser} />
+            </div>
+        {/* </div> */}
+        
     </>
 )
 }
