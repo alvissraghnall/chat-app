@@ -8,7 +8,7 @@ import logo from "../../assets/maxi.svg";
 import Conversation from './Conversation';
 
 
-const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, handleSearch }) => {
+const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal, handleSearch }) => {
     console.log(user, "di mma");
   return (
     <aside className={`fixed top-0 bottom-0 lg:left-0 p-2 w-72 overflow-y-auto text-center text-slate-600 dark:text-white bg-transparent dark:bg-gray-900 ${isOpen ? "" : "-left-72"}`}>
@@ -39,6 +39,7 @@ const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, handleSear
                 type="text"
                 placeholder='Search'
                 name="search"
+                value={searchVal}
                 id={/*className='text-sm ml-4 w-full bg-transparent focus:outline-none' */"search"}
                 className={/* "block py-2 pl-10 pr-3 w-full bg-gray-50 text-gray-900 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500" */`text-sm ml-4 w-full bg-transparent focus:outline-none`}
                 onChange={e => handleSearch(e.target.value)}

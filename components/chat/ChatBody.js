@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getMessages, getUser } from '../../services/chats.service';
+import ChatView from './ChatView';
 
 const ChatBody = ({ chat, user }) => {
 
@@ -52,7 +53,7 @@ const ChatBody = ({ chat, user }) => {
             </>
         </div>
 
-        
+        <ChatView currentUser={user?.id} messages={messages} />
     </div>
   )
 }
