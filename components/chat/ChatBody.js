@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { getMessages, getUser } from '../../services/chats.service';
+import { getMessages, getUser } from '../../services/';
 import ChatView from './ChatView';
+import WelcomeSVG from "./WelcomeSVG";
 
-const ChatBody = ({ chat, user }) => {
+const ChatBody = ({ chat, user, socket }) => {
 
     const [userData, setUserData] = useState(null);
     const [messages, setMessages] = useState([]);
@@ -35,26 +36,36 @@ const ChatBody = ({ chat, user }) => {
 
         if (chat !== null) fetchMsgs(); console.log(messages);
       }, [chat]);
+
+      
       
     //   console.log(messages); 
   return (
-    <div className="grid grid-rows-[19vh,65vh,16vh] dark:bg-[rgba(255,255,255,0.64)]">
+    <>
+    { chat ? (
+      <div className="grid grid-rows-[19vh,65vh,16vh] dark:bg-[rgba(255,255,255,0.64)]">
         <div className="flex flex-col py-4 pr-4 pl-0">
             <>
-                <div className="p-2 relative hover:bg-[#35caca38] dark:hover:bg-gray-600 cursor-pointer flex justify-between items-center hover:rounded-md">
+              <div className="p-2 relative hover:bg-[#35caca38] dark:hover:bg-gray-600 cursor-pointer flex justify-between items-center hover:rounded-md">
                 <div className="relative flex gap-2">
                     <img src={`https://avatars.dicebear.com/api/adventurer/34.svg`} className="h-12 w-12 rounded-[50%]" />
                     <div className="text-sm flex flex-col items-start justify-center">
-                    <span className='font-bold'>{ chat?.name || userData?.name }</span>
+                      <span className='font-bold'>{ chat?.name || userData?.name }</span>
                     </div>
                 </div>
-                </div>
-                <hr className='w-4/5 border-solid border-[#d4d2d2] dark:border-gray-400 text-center mx-auto' />
+              </div>
+              <hr className='w-4/5 border-solid border-[#d4d2d2] dark:border-gray-400 text-center mx-auto' />
             </>
         </div>
 
-        <ChatView currentUser={user?.id} messages={messages} />
+        <ChatView currentUser={user?.id} messages={messages} chat={chat} setMessages={setMessages} socket={socket} />
     </div>
+    ) : (
+      <div className="text-center mx-auto flex justify-center items-center h-screen">
+        <WelcomeSVG />
+      </div>
+    ) }
+    </>
   )
 }
 

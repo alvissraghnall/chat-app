@@ -8,8 +8,8 @@ import logo from "../../assets/maxi.svg";
 import Conversation from './Conversation';
 
 
-const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal, handleSearch }) => {
-    console.log(user, "di mma");
+const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal, handleSearch, checkOnlineStatus }) => {
+    // console.log(user, "di mma");
   return (
     <aside className={`fixed top-0 bottom-0 lg:left-0 p-2 w-72 overflow-y-auto text-center text-slate-600 dark:text-white bg-transparent dark:bg-gray-900 ${isOpen ? "" : "-left-72"}`}>
         
@@ -55,7 +55,7 @@ const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal,
                 { 
                     chats.map(chat => (
                         <div key={chat?._id} onClick={() => setCurrentChat(chat)}>
-                            <Conversation chat={chat} currentUser={user?.id} />
+                            <Conversation chat={chat} currentUser={user?.id} checkOnlineStatus={checkOnlineStatus} />
                         </div>
                     ))
                 }

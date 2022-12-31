@@ -1,4 +1,4 @@
-export const apiUrl = process.env.NEXT_PUBLIC_URI + "/api";
+import { apiUrl } from ".";
 
 export const userChats = async (id) => {
     return await fetch(`${apiUrl}/chat/${id}`, {
@@ -6,14 +6,3 @@ export const userChats = async (id) => {
     }).then((res) => res.json());
 }
 
-export const getUser = async (id) => {
-    return await fetch(`${apiUrl}/user/${id}`, {
-        method: "GET",
-    }).then((res) => res.json());
-}
-
-export const getMessages = async (id) => {
-    return await fetch(`${apiUrl}/message/${id}`, {
-        method: "GET",
-    }).then((res) => res.json());
-}
