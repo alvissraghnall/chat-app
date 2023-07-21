@@ -9,33 +9,33 @@ const ChatBody = ({ chat, user, socket }) => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const getUserData = async (id) => {
+      const getUserData = async (id) => {
+        try {
+          const user = await getUser(id);
+          setUserData(user);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      if (chat?.members?.length === 2) { 
+        const userId = chat?.members?.find(id => id !== user?.id);
+        console.log(userId);
+        if (chat !== null) getUserData(userId); console.log("ran", user);
+      };
+    }, [chat, user]);
+
+    useEffect(() => {
+      const fetchMsgs = async () => {
           try {
-            const user = await getUser(id);
-            setUserData(user);
-          } catch (err) {
-            console.error(err);
+              const data = await getMessages(chat?._id);
+              setMessages(data);
+          } catch (error) {
+              console.error(error);
           }
-        }
-        if (chat?.members?.length === 2) { 
-          const userId = chat?.members?.find(id => id !== user?.id);
-          console.log(userId);
-          if (chat !== null) getUserData(userId); console.log("ran", user);
-        };
-      }, [chat, user]);
+      }
 
-      useEffect(() => {
-        const fetchMsgs = async () => {
-            try {
-                const data = await getMessages(chat?._id);
-                setMessages(data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        if (chat !== null) fetchMsgs(); console.log(messages);
-      }, [chat]);
+      if (chat !== null) fetchMsgs(); console.log(messages);
+    }, [chat, messages]);
 
       
       

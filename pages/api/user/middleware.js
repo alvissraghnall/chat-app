@@ -2,7 +2,7 @@ import { unstable_getServerSession } from "next-auth/next"
 import { getToken } from "next-auth/jwt";
 import authOptions from "../auth/[...nextauth].js";
 
-export default async (req, res) => {
+const mdw = async (req, res) => {
 
     // const session = await unstable_getServerSession(req, res, authOptions)
 
@@ -16,3 +16,5 @@ export default async (req, res) => {
     }
     res.end();
 }
+
+export default mdw;
