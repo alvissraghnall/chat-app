@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function GetStarted() {
     return (
-        <div className="flex h-screen w-screen items-center justify-center" style="background-image:url(https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99004.jpg?w=2000)">
+        <div className="flex h-screen items-center justify-center bg-[url(https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99004.jpg?w=2000)]">
             <div className="relative flex w-[40rem] flex-col justify-center overflow-hidden rounded-lg bg-white/50 py-32">
                 <span className="absolute top-0 h-1 w-1/6 bg-blue-600"></span>
 
