@@ -12,7 +12,7 @@ export default function GetStarted() {
 
                     <Link href="/login">
                         <button class="group mt-10 flex w-40 items-center justify-center rounded-lg bg-blue-700 py-2 text-center font-bold text-white transition">
-                            Get Started
+                            Sign In
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"

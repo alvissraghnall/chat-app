@@ -31,7 +31,7 @@ export default function Home() {
 
 
     case "authenticated":
-      console.log("fire 2")
+      console.log("fire 2", session);
       navigate.push("/chat");
       return <></>;
 
