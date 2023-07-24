@@ -25,7 +25,7 @@ const Login = () => {
     }
 
     return (
-        <div className={`p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 ${styles.container}`}>
+        <div className={`p-4 my-16 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 ${styles.container}`}>
             <form className="space-y-6" onSubmit={handleSubmit}>
                 <h5 className="text-xl center text-center font-medium text-gray-900 dark:text-white">Sign in to Maxi</h5>
                 <div>

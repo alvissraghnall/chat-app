@@ -11,8 +11,8 @@
 //   if (!session) return NextResponse.redirect('/api/auth/signin')
 // }
 
-const mdw = () => {};
+// const mdw = () => {};
 
-export default mdw;
+// export default mdw;
 
-// export { default } from "next-auth/middleware";
+export { default } from "next-auth/middleware";
