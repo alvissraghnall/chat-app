@@ -36,7 +36,7 @@ const VerifyRequest = () => (
                 </p>
                 <Link href="/" >
                     <a 
-                        className={`${styles.contBtn} rounded-lg text-sm px-5 text-center py-3 font-medium text-sm leading-snug rounded`}
+                        className={`${styles.contBtn} rounded-lg px-5 text-center py-3 font-medium text-sm leading-snug`}
                     >
                         Back to home
                     </a>

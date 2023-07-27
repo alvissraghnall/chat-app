@@ -10,7 +10,7 @@ const Login = () => {
         ev.preventDefault();
 
         signIn("email",
-            { callbackUrl: "/user", email }
+            { callbackUrl: "/chat", email }
         );
     }
 
@@ -27,7 +27,7 @@ const Login = () => {
     return (
         <div className={`p-4 mx-auto my-16 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700`}>
             <form className="space-y-6" onSubmit={handleSubmit}>
-                <h5 className="text-xl center text-center font-medium text-gray-900 dark:text-white">Sign in to Maxi</h5>
+                <h5 className="text-xl center text-center font-semibold text-gray-900 dark:text-white">Sign in to Maxi</h5>
                 <div>
                     <label
                         htmlFor="email"
@@ -77,8 +77,7 @@ const Login = () => {
             </div>
 
             <a
-                className="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-                style={{ backgroundColor: "#3b5998" }}
+                className="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-4 w-full uppercase mx-auto justify-center "
                 href="#!"
                 role="button"
                 data-mdb-ripple="true"
@@ -88,7 +87,7 @@ const Login = () => {
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
-                    ariaHidden="true"
+                    aria-hidden="true"
                     className="w-4 h-4 mr-2"
                     viewBox="0 0 8 19"
                 >
@@ -101,8 +100,7 @@ const Login = () => {
                 Continue with Facebook
             </a>
             <a
-                className="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-                style={{ backgroundColor: "#e3e633" }}
+                className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-4 w-full uppercase justify-center"
                 role="button"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
@@ -111,7 +109,7 @@ const Login = () => {
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
-                    ariaHidden="true"
+                    aria-hidden="true"
                     className="w-4 h-4 mr-2"
                     viewBox="0 0 20 20"
                 >
@@ -124,8 +122,7 @@ const Login = () => {
                 Continue with Github
             </a>
             <a
-                className="px-7 py-3 text-dark font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-                style={{ backgroundColor: "#fff" }}
+                className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 w-full uppercase justify-center"
                 role="button"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
@@ -134,7 +131,7 @@ const Login = () => {
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
-                    ariaHidden="true"
+                    aria-hidden="true"
                     className="w-4 h-4 mr-2"
                     viewBox="0 0 18 19"
                 >

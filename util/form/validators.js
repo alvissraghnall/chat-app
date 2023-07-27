@@ -6,8 +6,8 @@ export const emailValidator = email => {
 }
 
 export const usernameValidator = username => {
-    if (!username) return "E-mail is required."
-    else if (username.length < 4) return "Username too short"
+    if (!username) return "Name is required."
+    else if (!/^[a-zA-Z0-9.\-_$@*!]{4,30}$/.test(username)) return "Username invalid!"
 
     return "";
 }
@@ -28,8 +28,8 @@ export const confirmPasswordValidator = (confirmPassword, { password }) => {
     return "";
 }
 
-export const allValidate = ({ email, password, username, confirmPassword}) => {
-    const errors = [emailValidator(email), usernameValidator(username), passwordValidator(password), confirmPasswordValidator(confirmPassword)];
+export const allValidate = ({ email, username}) => {
+    const errors = [emailValidator(email), usernameValidator(username)];
     if (errors.every(val => val === "")) {
         return true;
     } else {
