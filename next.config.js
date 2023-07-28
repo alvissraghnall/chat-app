@@ -4,6 +4,7 @@
 
 module.exports = {
   reactStrictMode: true,
+  // images: ["api.dicebear.com"]
   // webpack: (config, { dev, isServer, webpack, defaultLoaders, buildId }) => {
   //   if(dev) {
   //     config.optimization.splitChunks = {

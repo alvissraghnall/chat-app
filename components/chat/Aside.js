@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsAppIndicator, BsBoxArrowInRight, BsFilterLeft, BsHouseDoorFill, BsSearch, BsX } from 'react-icons/bs';
 import ThemeToggler from "../ThemeToggle";
-
+import { signOut } from "next-auth/react";;
 import Link from 'next/link';
 import Image from "next/image";
 import logo from "../../assets/maxi.svg";
@@ -65,7 +65,8 @@ const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal,
 
         <hr className='my-4 dark:border-slate-100 border-slate-200 border-solid' />
 
-        <div className="p-2.5 dark:text-white my-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#eee]/25 dark:hover:bg-transparent/25 fixed bottom-0 w-[17rem] justify-center text-slate-800">
+        {/* TODO: Add React headless ui for modal, or just use tailwind,bro. */}
+        <div className="p-2.5 dark:text-white my-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#eee]/25 dark:hover:bg-transparent/25 fixed bottom-0 w-[17rem] justify-center text-slate-800" onClick={signOut}>
             <BsBoxArrowInRight className='text-sm' />
             <span className="ml-4 capitalize text-sm">
                 logout
