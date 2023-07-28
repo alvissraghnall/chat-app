@@ -15,12 +15,12 @@ const Login = () => {
     }
 
     const handleGoogle = ev => {
-        signIn("google", { callbackUrl: "/user", });
+        signIn("google", { callbackUrl: "/chat", });
     }
 
     const handleGithub = ev => {
         signIn("github", {
-            callbackUrl: "/user"
+            callbackUrl: "/chat"
         });
     }
 

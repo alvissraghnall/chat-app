@@ -77,7 +77,7 @@ const ChatLayout = ({ children, user }) => {
     return (
     <>
         {/* <div className='flex flex-auto bg-[#a7bcff] h-screen items-center justify-center'>
-            <div class="w-full h-full rounded-md border-solid border-white border flex">
+            <div className="w-full h-full rounded-md border-solid border-white border flex">
                 <Sidebar />
             </div>
         </div> */}

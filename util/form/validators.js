@@ -28,8 +28,8 @@ export const confirmPasswordValidator = (confirmPassword, { password }) => {
     return "";
 }
 
-export const allValidate = ({ email, username}) => {
-    const errors = [emailValidator(email), usernameValidator(username)];
+export const allValidate = ({ email, name}) => {
+    const errors = [emailValidator(email), usernameValidator(name)];
     if (errors.every(val => val === "")) {
         return true;
     } else {
