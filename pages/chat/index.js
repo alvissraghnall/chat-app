@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ThemeProvider } from "../../components/ThemeContext";
 import Background from "../../components/Background";
-// import Layout from "../../components/Layout";
-// import Header from "../../components/chat/header";
 import Sidebar from "../../components/chat/Sidebar";
 import ChatLayout from "../../components/chat/Layout";
 import { unstable_getServerSession } from "next-auth";
+import { Loading } from "..";
 import { NextAuthOptions } from "../api/auth/[...nextauth]";
-import { useSession } from "next-auth/react";
+import { userChats } from "../../services";
 
-const Chat = () => {
-    const { data: session } = useSession();
-
+const Chat = ({ session, chats }) => {
     // if(typeof window !== "undefined") return null;
 
     // if(session) {
         return (
             <>
             <ThemeProvider>
-                <ChatLayout user={session?.user} />
+                <ChatLayout user={session?.user} chats={chats} />
                 {/* {session?.user?.id} */}
             </ThemeProvider>
             
@@ -31,7 +28,9 @@ const Chat = () => {
 export async function getServerSideProps(ctx) {
     return {
         props: {
-            // session: await unstable_getServerSession(ctx.req, ctx.res, NextAuthOptions),
+            session: await unstable_getServerSession(ctx.req, ctx.res, NextAuthOptions),
+            chats:  await userChats(this.session?.user?.id),
+            
         }
     }
 }

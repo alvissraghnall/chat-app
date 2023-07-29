@@ -5,7 +5,7 @@ import GithubProvider from "next-auth/providers/github";
 import FacebookProvider from "next-auth/providers/facebook";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { conn } from "../../../util/db/connect";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import clientPromise from "../../../util/db/mongodb";
 import nodemailer from "nodemailer";
 import User from "../../../model/User";

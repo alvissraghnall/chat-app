@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { searchForUser, userChats } from '../../services/';
+import { searchForUser,  } from '../../services/';
 // import Navbar from '../Navbar';
 import Sidebar from './Aside';
 import ChatBody from './ChatBody';
@@ -7,10 +7,10 @@ import DrawerButton from './DrawerButton';
 import { io } from "socket.io-client";
 
 
-const ChatLayout = ({ children, user }) => {
+const ChatLayout = ({ children, user, chats }) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [ currentChat, setCurrentChat ] = useState(null);
-    const [chats, setChats] = useState([]);
+    // const [chats, setChats] = useState([]);
     const [onlineUsers, setOnlineUsers] = useState([]);
     const [searchVal, setSearchVal] = useState("");
     const socket = useRef();
@@ -52,20 +52,6 @@ const ChatLayout = ({ children, user }) => {
         // query db, make actions .
     }
 
-    const updateChats = (chats) => setChats(chats);
-
-    useEffect(() => {
-        const getChats = async () => {
-            try {
-                const chatsFromServer = await userChats(frUser.id);
-                updateChats(chatsFromServer);
-                console.log(chats, chatsFromServer);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        getChats();
-    }, [])
     console.log(chats, "chats");
 
     const checkOnlineStatus = chat => {

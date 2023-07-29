@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import GetStarted from '../components/GetStarted';
 import SvgLogo from '../components/SvgLogo';
 
-const Loading = () => {
+export const Loading = () => {
   return (
     <div className="bg-gray-200 w-full min-h-screen flex justify-center items-center">
       <SvgLogo />
@@ -60,7 +60,7 @@ export default function Home() {
 //     return {
 //       redirect: {
 //         permanent: false,
-//         destination: "/api/auth/signin"
+//         destination: "/login"
 //       },
 //       props: {}
 //     }
