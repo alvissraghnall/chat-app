@@ -29,13 +29,13 @@ function LogoutModal ({ isOpen, setIsOpen }) {
                 <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
 
                     <Transition.Child
-                        as={Fragment}
-                        enter="transform ease-out duration-400 sm:duration-500"
-                        enterFrom="opacity-0 scale-95 translate-y-full"
-                        enterTo="opacity-100 scale-100 translate-y-0"
-                        leave="transform ease-in duration-400 sm:duration-500"
-                        leaveFrom="opacity-100 scale-100 translate-y-0"
-                        leaveTo="opacity-0 scale-95 translate-y-full"
+                      as={Fragment}
+                      enter="transform ease-out duration-400 sm:duration-500"
+                      enterFrom="opacity-0 scale-95 translate-y-full"
+                      enterTo="opacity-100 scale-100 translate-y-0"
+                      leave="transform ease-in duration-400 sm:duration-500"
+                      leaveFrom="opacity-100 scale-100 translate-y-0"
+                      leaveTo="opacity-0 scale-95 translate-y-full"
                     >
                         <Dialog.Panel className="pointer-events-auto w-full max-w-md">
                             <div className='flex items-start justify-between p-5'>

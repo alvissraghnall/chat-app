@@ -8,6 +8,7 @@ import { conn } from "../../../util/db/connect";
 import mongoose from "mongoose";
 import clientPromise from "../../../util/db/mongodb";
 import nodemailer from "nodemailer";
+import User from "../../../model/User";
 // import CredentialsUser from "../../../model/CredentialsUser";
 // let User = mongoose.model("User");
 
@@ -42,7 +43,14 @@ export const NextAuthOptions = {
                 auth: {
                   user: process.env.EMAIL_SERVER_USER,
                   pass: process.env.EMAIL_SERVER_PASSWORD
-                }
+                },
+                requireTLS: false,
+                tls: {
+                    ciphers: "SSLv3",
+                    rejectUnauthorized: false,
+                },
+                service: "Outlook",
+                connectionTimeout: 1000 * 60
             },
             from: process.env.EMAIL_FROM,
 
@@ -51,8 +59,9 @@ export const NextAuthOptions = {
                 url,
                 provider: { server, from },
                 theme
-              }) {
+            }) {
                 const { host } = new URL(url)
+                // console.log(process.env);
                 const transport = nodemailer.createTransport(server)
                 await transport.sendMail({
                   to: email,
@@ -61,7 +70,7 @@ export const NextAuthOptions = {
                   text: text({ url, host }),
                   html: html({ url, host, email, theme })
                 })
-              }
+            }
         })
 
     ],
@@ -81,6 +90,19 @@ export const NextAuthOptions = {
                 session.user.id = token.uid;
             }
             return session;
+        },
+
+        async signIn({ user, account, email }) { 
+            await conn(); 
+            console.log(user, account, email);
+            const userExists = await User.findOne({ 
+              email: user.email,  //the user object has an email property, which contains the email the user entered.
+            });
+            if (userExists) {
+              return true;   //if the email exists in the User collection, email them a magic login link
+            } else {
+              return "/register"; 
+            }
         },
     },
     jwt: async ({ user, token }) => {

@@ -1,35 +1,20 @@
-
-.container {
-    position: relative;
-    top: 110px;
-    width: 320px;
-    display: block;
-    margin: auto;
-    text-align: center;
-    font-family: "Source Sans Pro", sans-serif;
-}
-
 .upperSide {
     padding: 2em;
-    background-color: #8BC34A;
-    display: block;
+    /* background-color: #8BC34A; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: #fff;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-}
-
-.checkmark {
-    font-weight: lighter;
-    fill: #fff;
-    margin: -3.5em auto auto 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .status {
-    font-weight: lighter;
+    font-weight: semibold;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 1em;
-    margin-top: -0.2em;
     margin-bottom: 0;
 }
 
@@ -37,8 +22,8 @@
     padding: 2em 2em 5em 2em;
     background: #fff;
     display: block;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .message {
@@ -51,7 +36,8 @@
     position: relative;
     top: 1.5em;
     text-decoration: none;
-    background: #0bb619 !important;
+    /* background: #0bb619 !important; */
+    background-image: linear-gradient(to right bottom, #42e1be, #58de9c, #78d975);
     color: #fff;
     margin: auto;
     padding: 0.8em 3em;

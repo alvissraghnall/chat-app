@@ -30,13 +30,9 @@ const Register = () => {
     useEffect(() => setAvatars(generateAvatars), []);
 
     const refreshAvatars = () => setAvatars(generateAvatars);
-    const chooseAvatar = ev => {
-        setPickedAvatar(ev.currentTarget.src);
-        console.log(ev.currentTarget.src, pickedAvatar)
-        // console.log(avatars, avatars.includes(''));
-    }
+    const chooseAvatar = ev => setPickedAvatar(ev.currentTarget.src);
 
-    const handleSubmit = (ev) => {
+    const handleSubmit = async (ev) => {
         ev.preventDefault();
         setIsSubmitting(true);
         const data = {
@@ -45,7 +41,7 @@ const Register = () => {
             image: pickedAvatar
         };
 
-        registerUser(data, setIsSubmitting)
+        registerUser(data)
             .then(
                 res => {
                     if(res.status === 201) {
@@ -67,6 +63,7 @@ const Register = () => {
                 }
             )
             .finally(() => setIsSubmitting(false));
+        console.log(":pes");
     }
 
     return (

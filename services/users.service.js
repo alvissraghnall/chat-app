@@ -1,4 +1,5 @@
 import { apiUrl } from ".";
+import axios from "axios";
 
 export const getUser = async (id) => {
     return await fetch(`${apiUrl}/user/${id}`, {
@@ -7,5 +8,6 @@ export const getUser = async (id) => {
 }
 
 export const registerUser = async (data) => {
-    return axios.post("/api/register", data);    
+    console.log("re");
+    return await axios.post("/api/register", data);
 }
