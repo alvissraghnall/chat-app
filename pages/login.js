@@ -2,9 +2,11 @@ import { useState } from "react";
 import styles from "../styles/Register.module.css";
 import { signIn, getProviders } from "next-auth/react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const Login = () => {
 
+    const navigate = useRouter();
     const [email, setEmail] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -13,11 +15,18 @@ const Login = () => {
         setIsSubmitting(true);
 
         signIn("email",
-            { callbackUrl: "/chat", email }
+            { email, redirect: false },
         )
-        .catch(err => {
-            console.log(err);
-            toast.error(err.message);
+        .then(({ ok, url, error}) => {
+            console.log(url, ok, error);
+            if(!error) window.location.replace('/chat');
+            else {
+                console.log(error);
+                toast.error("User with email provided does not exist.", {
+                    autoClose: 5800,
+                    className: "!font-poppins",
+                });
+            }
         })
         .finally(() => setIsSubmitting(false));
     }
@@ -28,7 +37,6 @@ const Login = () => {
                 console.log(err);
                 toast.error(err.message);
             })
-            .finally(() => setIsSubmitting(false));
     }
 
     const handleGithub = ev => {

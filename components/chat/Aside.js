@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { BsAppIndicator, BsBoxArrowInRight, BsFilterLeft, BsHouseDoorFill, BsSearch, BsX } from 'react-icons/bs';
 import ThemeToggler from "../ThemeToggle";
 import { signOut } from "next-auth/react";;
@@ -7,6 +7,7 @@ import Image from "next/image";
 import logo from "../../assets/maxi.svg";
 import Conversation from './Conversation';
 import LogoutModal from '../LogoutModal';
+import Logout from "./user/Logout";
 
 
 const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal, handleSearch, checkOnlineStatus }) => {

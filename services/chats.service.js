@@ -1,3 +1,4 @@
+import axios from "axios";
 import { apiUrl } from ".";
 
 export const userChats = async (id) => {
@@ -6,3 +7,6 @@ export const userChats = async (id) => {
     }).then((res) => res.json());
 }
 
+export const searchForUser = async str => {
+    return await axios.get(`${apiUrl}/chat/user/${str}`);
+}

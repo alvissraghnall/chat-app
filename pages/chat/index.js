@@ -19,7 +19,7 @@ const Chat = () => {
             <>
             <ThemeProvider>
                 <ChatLayout user={session?.user} />
-                {session?.user?.id}
+                {/* {session?.user?.id} */}
             </ThemeProvider>
             
             </>
@@ -31,7 +31,7 @@ const Chat = () => {
 export async function getServerSideProps(ctx) {
     return {
         props: {
-            session: await unstable_getServerSession(ctx.req, ctx.res, NextAuthOptions),
+            // session: await unstable_getServerSession(ctx.req, ctx.res, NextAuthOptions),
         }
     }
 }

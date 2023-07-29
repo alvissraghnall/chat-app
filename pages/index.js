@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import GetStarted from '../components/GetStarted';
 import SvgLogo from '../components/SvgLogo';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Loading = () => {
   return (
