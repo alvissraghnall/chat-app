@@ -1,7 +1,17 @@
+import { getServerSession } from "next-auth";
 import ChatMessage from "../../model/ChatMessage";
 import { connectDB } from "../../util/db/connect";
+import { NextAuthOptions } from "./auth/[...nextauth]";
 
 const handler = async (req, res) => {
+    const session = await getServerSession(req, res, NextAuthOptions);
+
+    if (!session) {
+        return res.status(401).json({
+            message: "You must be logged in!"
+        })
+    }
+
     switch(req.method) {
         case "POST":
             const { sender, room, content } = req.body;

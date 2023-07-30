@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { searchForUser,  } from '../../services/';
+import { searchForChatOrUser,  } from '../../services/';
 // import Navbar from '../Navbar';
 import Sidebar from './Aside';
 import ChatBody from './ChatBody';
@@ -47,7 +47,7 @@ const ChatLayout = ({ children, user, chats }) => {
 
     const handleSearch = (val) => {
         setSearchVal(val);
-        searchForUser(searchVal)
+        searchForChatOrUser(searchVal)
             .then()
         // query db, make actions .
     }

@@ -7,6 +7,6 @@ export const userChats = async (id) => {
     }).then((res) => res.json());
 }
 
-export const searchForUser = async str => {
-    return await axios.get(`${apiUrl}/chat/user/${str}`);
+export const searchForChatOrUser = async str => {
+    return await axios.get(`${apiUrl}/search?query=${encodeURIComponent(query)}`);
 }

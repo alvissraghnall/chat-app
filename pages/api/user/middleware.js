@@ -1,6 +1,6 @@
-import { unstable_getServerSession } from "next-auth/next"
+import { getServerSession } from "next-auth/next"
 import { getToken } from "next-auth/jwt";
-import authOptions from "../auth/[...nextauth].js";
+import {NextAuthOptions} from "../auth/[...nextauth].js";
 
 const mdw = async (req, res) => {
 
