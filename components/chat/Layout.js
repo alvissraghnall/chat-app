@@ -5,6 +5,7 @@ import Sidebar from './Aside';
 import ChatBody from './ChatBody';
 import DrawerButton from './DrawerButton';
 import { io } from "socket.io-client";
+import { toast } from 'react-toastify';
 
 
 const ChatLayout = ({ children, user, chats }) => {
@@ -14,6 +15,7 @@ const ChatLayout = ({ children, user, chats }) => {
     const [onlineUsers, setOnlineUsers] = useState([]);
     const [searchVal, setSearchVal] = useState("");
     const socket = useRef();
+    const [searchResults, setSearchResults] = useState([]);
     const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URI;
  
     useEffect(() => { 
@@ -48,7 +50,15 @@ const ChatLayout = ({ children, user, chats }) => {
     const handleSearch = (val) => {
         setSearchVal(val);
         searchForChatOrUser(searchVal)
-            .then()
+            .then(res => {
+                const combinedResults = [...data.chatRooms, ...data.users];
+                setSearchResults(combinedResults);
+            })
+            .catch(err => {
+                if (err.response.status === 400) {
+                    toast.error(err.response?.data?.message)
+                } 
+            });
         // query db, make actions .
     }
 
@@ -70,7 +80,7 @@ const ChatLayout = ({ children, user, chats }) => {
             </div>
         </div> */}
         {/* <div className="flex"> */}
-            <Sidebar isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} chats={chats} user={frUser} setCurrentChat={setCurrentChat} searchVal={searchVal} handleSearch={handleSearch} checkOnlineStatus={checkOnlineStatus} />
+            <Sidebar isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} chats={chats} user={frUser} setCurrentChat={setCurrentChat} searchVal={searchVal} handleSearch={handleSearch} checkOnlineStatus={checkOnlineStatus} searchResults={searchResults} />
             <div className="ml-72 w-auto relative overflow-y-auto z-[1]">
                 <DrawerButton isOpen={isDrawerOpen} changeIsOpen={changeIsDrawerOpen} />
                 <ChatBody chat={currentChat} user={frUser} socket={socket} />

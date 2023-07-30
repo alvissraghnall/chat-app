@@ -10,7 +10,7 @@ import LogoutModal from '../LogoutModal';
 import Logout from "./user/Logout";
 
 
-const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal, handleSearch, checkOnlineStatus }) => {
+const Sidebar = ({ searchResults, isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal, handleSearch, checkOnlineStatus }) => {
     // console.log(user, "di mma");
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   return (
@@ -47,6 +47,14 @@ const Sidebar = ({ isOpen, changeIsOpen, chats, user, setCurrentChat, searchVal,
                 className={/* "block py-2 pl-10 pr-3 w-full bg-gray-50 text-gray-900 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500" */`text-sm ml-4 w-full bg-transparent text-slate-900 focus:outline-none dark:text-white placeholder:text-slate-600 dark:placeholder:text-inherit`}
                 onChange={e => handleSearch(e.target.value)}
             />
+            <datalist id="chats">
+                {
+                    searchResults.map(res => (
+                        <option value={res?.name} />
+                    ))
+                }
+            </datalist>
+
         </div>
         <div className="p-2.5 mt-3 flex-col flex items-center rounded-md px-4 duration-300">
             {/* <BsHouseDoorFill className='text-sm' /> */}
