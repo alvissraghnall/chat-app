@@ -7,8 +7,10 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { conn } from "../../../util/db/connect";
 // import mongoose from "mongoose";
 import clientPromise from "../../../util/db/mongodb";
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
+import nodeoutlook from 'nodejs-nodemailer-outlook';
 import User from "../../../model/User";
+import ServiceUnavailableError from "../../../util/errors/ServiceUnavailableError";
 // import CredentialsUser from "../../../model/CredentialsUser";
 // let User = mongoose.model("User");
 
@@ -50,7 +52,8 @@ export const NextAuthOptions = {
                     rejectUnauthorized: false,
                 },
                 service: "Outlook",
-                connectionTimeout: 1000 * 60
+                // secure: true,
+                connectionTimeout: 1000 * 60 
             },
             from: process.env.EMAIL_FROM,
 
@@ -62,14 +65,40 @@ export const NextAuthOptions = {
             }) {
                 const { host } = new URL(url)
                 // console.log(process.env);
-                const transport = nodemailer.createTransport(server)
-                await transport.sendMail({
-                  to: email,
-                  from,
-                  subject: `Sign in to ${host}`,
-                  text: text({ url, host }),
-                  html: html({ url, host, email, theme })
-                })
+                // const transport = nodemailer.createTransport(server)
+                // await transport.sendMail({
+                //   to: email,
+                //   from,
+                //   subject: `Sign in to ${host}`,
+                //   text: text({ url, host }),
+                //   html: html({ url, host, email, theme })
+                // });
+                let response = new Promise(
+                    (resolve, reject) => {
+                        nodeoutlook.sendEmail({
+                            to: email,
+                            from,
+                            subject: `Sign in to ${host}`,
+                            text: text({ url, host }),
+                            html: html({ url, host, email, theme }),
+                            auth: {
+                                user: process.env.EMAIL_SERVER_USER,
+                                pass: process.env.EMAIL_SERVER_PASSWORD
+                            },
+                            onError: (e) => { reject(err); },
+                            onSuccess: (i) => {
+                                resolve(i);
+                                console.log(i);
+                            }
+                        })
+                }).catch(err => { throw new ServiceUnavailableError("Server currently down for sending emails. Please try again in a minute.") })
+
+                const result = await response;
+
+                const failed = result.rejected.concat(result.pending).filter(Boolean);
+                if (failed.length) {
+                    throw new Error(`Email: ${failed.join(", ")} could not be sent!`);
+                }
             }
         })
 
